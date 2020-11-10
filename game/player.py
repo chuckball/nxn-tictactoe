@@ -30,21 +30,21 @@ class Player:
 
     def _search_grid_and_input_symbol(self, input_value, board) -> bool:
         """Search of input on board"""
-        # Find row position of input
-        row = 0
+        # Find col position of input
+        col = 0
         if input_value > board.size:
             for i in range(1, board.size):
                 if (board.size * i) < input_value <= (board.size * (i + 1)):
-                    row = i
-        # Find col position of input
+                    col = i
+        # Find row position of input
         if not (input_value % board.size) == 0:
-            col = (input_value % board.size) - 1
+            row = (input_value % board.size) - 1
         else:
-            col = board.size - 1
+            row = board.size - 1
 
         """Input symbol"""
-        if board.grid_map[row][col] != 'x' and board.grid_map[row][col] != 'o':
-            board.grid_map[row][col] = self.symbol
+        if board.grid_map[col][row] != 'x' and board.grid_map[col][row] != 'o':
+            board.grid_map[col][row] = self.symbol
             return True
         else:
             return False

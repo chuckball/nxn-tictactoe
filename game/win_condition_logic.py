@@ -1,37 +1,40 @@
-def _check_vertical_win_condition(board) -> bool:
-    for row in range(board.size):
-        for col in range(board.size):
+def _check_horizontal_win_condition(board) -> bool:
+    for col in range(board.size):
+        for row in range(board.size):
             # Skip checking last 2 row edge case
-            if col != (board.size - 1) and col != (board.size - 2):
+            if row != (board.size - 1) and row != (board.size - 2):
                 # Check rightwards if 3 symbols match from current grid
-                if board.grid_map[row][col] == board.grid_map[row][col + 1] == board.grid_map[row][col + 2]:
+                if board.grid_map[col][row] == board.grid_map[col][row + 1] == board.grid_map[col][row + 2]:
                     return True
     return False
 
-def _check_horizontal_win_condition(board) -> bool:
-    for row in range(board.size):
+
+def _check_vertical_win_condition(board) -> bool:
+    for col in range(board.size):
         # Skip checking last 2 col edge case
-        if row != (board.size - 1) and row != (board.size - 2):
-            for col in range(board.size):
+        if col != (board.size - 1) and col != (board.size - 2):
+            for row in range(board.size):
                 # Check downwards if 3 symbols match from current grid
-                if board.grid_map[row][col] == board.grid_map[row + 1][col] == board.grid_map[row + 2][col]:
+                if board.grid_map[col][row] == board.grid_map[col + 1][row] == board.grid_map[col + 2][row]:
                     return True
     return False
+
 
 def _check_diagonal_win_condition(board) -> bool:
-    for row in range(board.size):
+    for col in range(board.size):
         # Skip checking last/first 1 row/col
-        if row != 0 and row != (board.size - 1):
-            for col in range(board.size):
-                if col != 0 and col != (board.size - 1):
+        if col != 0 and col != (board.size - 1):
+            for row in range(board.size):
+                if row != 0 and row != (board.size - 1):
                     # 1. Check diagonally from upper left grid of current grid towards lower right grid
                     # 2. Check diagonally from upper right grid of current grid towards lower left grid
-                    if board.grid_map[row][col] == board.grid_map[row - 1][col - 1] == board.grid_map[row + 1][col + 1] \
-                            or board.grid_map[row][col] == \
-                            board.grid_map[row - 1][col + 1] == \
-                            board.grid_map[row + 1][col - 1]:
+                    if board.grid_map[col][row] == board.grid_map[col - 1][row - 1] == board.grid_map[col + 1][row + 1] \
+                            or board.grid_map[col][row] == \
+                            board.grid_map[col - 1][row + 1] == \
+                            board.grid_map[col + 1][row - 1]:
                         return True
     return False
+
 
 def check_win_condition(board) -> bool:
     """
@@ -43,7 +46,8 @@ def check_win_condition(board) -> bool:
 
     If not, change player turn
     """
-    if _check_vertical_win_condition(board) or _check_horizontal_win_condition(board) or _check_diagonal_win_condition(board):
+    if _check_vertical_win_condition(board) or _check_horizontal_win_condition(board) or _check_diagonal_win_condition(
+            board):
         return True
     else:
         board.alternate_current_player()

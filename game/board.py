@@ -24,11 +24,11 @@ class Board:
         """Generate an empty game board."""
         n = 1
         for _ in range(size):
-            row = []
+            col = []
             for _ in range(size):
-                row.append(str(n))
+                col.append(str(n))
                 n += 1
-            self.grid_map.append(row)
+            self.grid_map.append(col)
 
     def alternate_current_player(self):
         """Swap players turn every round."""
@@ -40,13 +40,13 @@ class Board:
     def draw_board(self):
         """Draw game board into console, leaving out the last index so there isn't extra lines."""
         print('')
-        for row in range(self.size):
-            for col in range(self.size):
-                if col == self.size - 1:
-                    print(color_symbol(self.grid_map[row][col]).center(5))
+        for col in range(self.size):
+            for row in range(self.size):
+                if row == self.size - 1:
+                    print(color_symbol(self.grid_map[col][row]).center(5))
                 else:
-                    print(color_symbol(self.grid_map[row][col]).center(5) + '|', end='')
-            if row != self.size - 1:
+                    print(color_symbol(self.grid_map[col][row]).center(5) + '|', end='')
+            if col != self.size - 1:
                 print('------' * self.size)
         print('')
 

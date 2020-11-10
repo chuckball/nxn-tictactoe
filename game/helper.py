@@ -2,6 +2,8 @@ import colorama
 
 # colorama fixes color in Windows Powershell
 colorama.init()
+
+
 def color_symbol(symbol: str) -> str:
     if symbol.lower() == 'x':
         return Colors.CYAN + "  " + symbol + "  " + Colors.RESET
