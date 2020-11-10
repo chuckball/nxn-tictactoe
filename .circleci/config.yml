@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  test-coverage:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          command: |
+            pip install -U pip
+            pip install coverage
+            pip install colorama
+            cd tests
+            coverage run --omit */tests/* -m unittest tests_runner # run tests
+            coverage xml
+            bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
+
+
+workflows:
+  main:
+    jobs:
+      - test-coverage
