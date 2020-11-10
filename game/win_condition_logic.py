@@ -37,8 +37,7 @@ def _check_diagonal_win_condition(board) -> bool:
 
 
 def check_win_condition(board) -> bool:
-    """
-    Check for win conditions to end the game.
+    """Check for win conditions to end the game.
 
     1: Check for vertical win condition
     2: Check for horizontal win condition

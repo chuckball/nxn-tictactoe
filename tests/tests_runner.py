@@ -3,7 +3,7 @@ import unittest
 import sys
 import os
 
-"""Hack for tests to work in terminal"""
+# Hack for tests to work in terminal
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)

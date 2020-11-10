@@ -5,8 +5,7 @@ from .player import Player
 
 class Board:
     def __init__(self, player1: Player, player2: Player, size: int = 3):
-        """
-        Create a new Board Object.
+        """Create a new Board Object.
 
         :param player1: Player 1 details
         :param player2: Player 2 details

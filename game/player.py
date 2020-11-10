@@ -1,7 +1,6 @@
 class Player:
     def __init__(self, name: str, symbol: str):
-        """
-        Create Player Object
+        """Create Player Object
 
         :param name: Player Name
         :param symbol: x / o
@@ -29,7 +28,7 @@ class Player:
                 continue
 
     def _search_grid_and_input_symbol(self, input_value, board) -> bool:
-        """Search of input on board"""
+        """Search for input on board and then input symbol."""
         # Find col position of input
         col = 0
         if input_value > board.size:
@@ -42,7 +41,7 @@ class Player:
         else:
             row = board.size - 1
 
-        """Input symbol"""
+        # Input symbol
         if board.grid_map[col][row] != 'x' and board.grid_map[col][row] != 'o':
             board.grid_map[col][row] = self.symbol
             return True

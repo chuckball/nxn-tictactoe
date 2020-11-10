@@ -1,6 +1,4 @@
 import unittest
-import sys
-import os
 from unittest import mock
 
 from game.player import Player
